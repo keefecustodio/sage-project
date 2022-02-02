@@ -83,7 +83,7 @@ export default class App extends Component {
   
         <br/>
         <br/>
-        <h1>Level {this.state.count}</h1>
+        <h2>Water Height: {this.state.count * 20}</h2>
         <br/>
         
 
