@@ -16,12 +16,12 @@ export default class App extends Component {
       count: 0,
       runningStatus: false
     }
-    this.incrementWaterLayer = this.incrementWaterLayer.bind(this);
-    this.decrementWaterLayer = this.decrementWaterLayer.bind(this);
+    this.increaseWaterLayer = this.increaseWaterLayer.bind(this);
+    this.decreaseWaterLayer = this.decreaseWaterLayer.bind(this);
   }
 
 
-  incrementWaterLayer() {
+  increaseWaterLayer() {
 
     clearInterval(interval);
     
@@ -32,26 +32,33 @@ export default class App extends Component {
             this.setState({count: this.state.count + 1})
             this.setState({inputList: this.state.inputList.concat(<div className="water-layer"></div>)})
             console.log("logged")
+          } else {
+            clearInterval(interval)
+            this.setState({runningStatus: !this.state.runningStatus})
           }
         
       }, 1000);
       this.setState({runningStatus: !this.state.runningStatus})
+      
     } else {
       clearInterval(interval);
       this.setState({runningStatus: !this.state.runningStatus})
     }
   }
 
-  decrementWaterLayer() {
+  decreaseWaterLayer() {
     clearInterval(interval);
     
     if(!this.state.runningStatus) {
 
       interval = setInterval(() => {
-          if(this.state.count < 5 ) {
+          if(this.state.count > 0 ) {
             this.setState({count: this.state.count - 1})
             this.setState({inputList: this.state.inputList.slice(0,this.state.inputList.length - 1)})
             console.log("logged")
+          } else {
+            clearInterval(interval)
+            this.setState({runningStatus: !this.state.runningStatus})
           }
         
       }, 1000);
@@ -74,17 +81,23 @@ export default class App extends Component {
           {this.state.inputList}
         </div>
   
-        <div className = "bath-tub-feet">
-          <div className = "bath-tub-foot"></div>
-          <div className = "bath-tub-foot"></div>
-        </div>
-  
+        <br/>
+        <br/>
         <h1>Level {this.state.count}</h1>
+        <br/>
         
+
+        <div className = {this.state.runningStatus ? 'running-status-on' : 'running-status-off'}></div>
+        <br/>
+        <br/>
+
         <div className = "level-buttons">
-          <button onClick = {this.decrementWaterLayer}>Decrease</button>
-          <button onClick = {this.incrementWaterLayer}>Increase</button>
+          <button onClick = {this.decreaseWaterLayer}>Decrease</button>
+          <button onClick = {this.increaseWaterLayer}>Increase</button>
         </div>
+
+        
+        
         
       </div>
     );
