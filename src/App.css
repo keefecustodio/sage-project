@@ -1,38 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #181818;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.bath-tub-top {
+  height: 10px;
+  width: 370px;
+  border: 5px solid black;
+  border-radius: 10px;
+  background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bath-tub {
+
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: white;
+  border: 5px solid black;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-top: none;
+  margin: 0 auto;
+  width: 350px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.water-layer {
+  background-color:lightblue;
+  width: 100%;
+  height: 20px;
+}
+
+
+.level-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 20px;
+  width: 300px;
+}
+
+.level-buttons button {
+  padding: 8px 24px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.level-buttons button:active {
+  transform: scale(0.95);
 }
